@@ -10,8 +10,8 @@ const Footer = () => {
         <SocialLinks />
 
         <FooterAttribution>
-          Hand-crafted with love by{' '}
-          <a href="https://twitter.com/yinkakun">Yinka Adedire</a>
+          Based on Glass theme by{' '}
+          <a href="https://twitter.com/yinkakun">Yinka Adedire</a>. Built by the Netdata Community team. 
         </FooterAttribution>
       </FooterWrapper>
     </StyledFooter>

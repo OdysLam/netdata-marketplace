@@ -6,7 +6,7 @@ module.exports = {
       summary: `A community marketplace for Netdata agent collectors and alerts`,
     },
     description: `A community marketplace for Netdata Agent collectors and alerts`,
-    siteUrl: `marketplace.netdata.cloud`,
+    siteUrl: `https://marketplace.netdata.cloud`,
     social: {
       twitter: `linuxnetdata`,
     },
@@ -18,11 +18,7 @@ module.exports = {
       {
         name: 'twitter',
         url: 'https://twitter.com/linuxnetdata',
-      },
-      {
-        name: 'instagram',
-        url: 'https://instagram.com',
-      },
+      }
     ],
   },
   plugins: [
