@@ -21,7 +21,7 @@ try {
   let dir = fs.readdirSync('./');
   console.log(`alerts, collectors deleted. Current directory: ${dir}`);
   const downloader = new Downloader({
-    github: {'auth': "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"}
+    github: {'auth': process.env.GITHUB_AUTH}
   });
   downloader.download(repoUser, 'community', 'collectors', { sha: repoBranch } );
   downloader.download(repoUser, 'community', 'alerts', { sha: repoBranch } );
