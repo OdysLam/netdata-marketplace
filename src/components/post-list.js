@@ -8,7 +8,6 @@ const PostList = ({ posts }) => {
     const { title, tags, date, description } = frontmatter;
     const { slug } = fields;
     let nodeTags = tags;
-    let newSlug = customPath.concat(slug);
     return (
       <PostListItem
         key={slug}
