@@ -131,6 +131,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       getNode,
     });
+    console.log(node.internal.frontmatter);
 
     const fileNode = getNode(node.parent);
 
@@ -140,13 +141,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value: fileNode.sourceInstanceName,
     });
 
-if (fileNode.sourceInstanceName === 'posts') {
-createNodeField({
-name: `slug`,
-node,
-value: `${relativeFilePath}`,
-});
-}
+  if (fileNode.sourceInstanceName === 'posts') {
+    createNodeField({
+      name: `slug`,
+      node,
+      value: `${relativeFilePath}`,
+    });
+  }
 
     if (fileNode.sourceInstanceName === 'pages') {
       createNodeField({

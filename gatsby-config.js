@@ -8,7 +8,7 @@ module.exports = {
     description: `A community marketplace for Netdata Agent collectors and alerts`,
     siteUrl: `https://gatsbyglass.netlify.app`,
     social: {
-      twitter: `yinkakun`,
+      twitter: `linuxnetdata`,
     },
     socialLinks: [
       {
@@ -157,7 +157,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/icon.png`,
+        icon: `src/images/netdata-logomark.svg`,
       },
     },
     `gatsby-plugin-react-helmet`,
