@@ -1,9 +1,8 @@
 {
   "name": "gatsby-starter-glass",
-  "private": true,
-  "description": "A minimal & beautiful gatsby personal blog starter with a nice glassmorphism UI.",
+  "description": "A community-curated marketplace for Netdata collectors and alerts",
   "version": "1.0.0",
-  "author": "Yinka Adedire <yinkakun@gmail.com>",
+  "author": "@odyslam <odysseas@netdata.cloud",
   "dependencies": {
     "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^3.0.1",
@@ -38,15 +37,16 @@
   "devDependencies": {
     "prettier": "2.2.1"
   },
-  "homepage": "https://github.com/yinkakun/gatsby-starter-glass#readme",
+  "homepage": "https://github.com/netdata/marketplace", 
   "keywords": [
     "gatsby",
-    "netlify cms"
+    "netdata",
+    "community"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yinkakun/gatsby-starter-glass.git"
+    "url": "git+https://github.com/netdata/marketplace"
   },
   "scripts": {
     "build": "gatsby build",

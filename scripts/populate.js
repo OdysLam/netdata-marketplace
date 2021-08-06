@@ -4,34 +4,29 @@ const repoBranch = 'chg-structure';
 const fs = require('fs');
 const path = require('path');
 
+async function downloadDirectories() {
+  
 try {
     const filePath = process.cwd();
-    fs.rm(`./alerts`, { recursive: true }, (err) => {
-        if(err){
-          console.log('/alerts folder is already deleted');
-        }
-    });
-    fs.rm(`./collectors`, { recursive: true }, (err) => {
-        if(err){
-            // File deletion failed
-               console.error(err.message);
-                       return;}
-                           });
-
+    fs.rmSync(`./alerts`, { recursive: true });
+    fs.rmSync(`./collectors`, { recursive: true });
   let dir = fs.readdirSync('./');
   console.log(`alerts, collectors deleted. Current directory: ${dir}`);
-  const downloader = new Downloader({
-    github: {'auth': process.env.GITHUB_AUTH}
-  });
-  downloader.download(repoUser, 'community', 'collectors', { sha: repoBranch } );
-  downloader.download(repoUser, 'community', 'alerts', { sha: repoBranch } );
-  
 }
 catch( e ) {
   console.error("Encountered error while download GitHub repositories:", e);
 }
-
-async function moveFiles(){
+  const downloader = new Downloader({
+    github: {'auth': process.env.GITHUB_AUTH}
+  });
+  {
+    await downloader.download(repoUser, 'community', 'collectors', { sha: repoBranch } );
+    await downloader.download(repoUser, 'community', 'alerts', { sha: repoBranch } );
+  }
+  dir = fs.readdirSync('./');
+  console.log(`Directories downloaded. Current directory: ${dir}`);
+}
+  function moveFiles(){
   try {
     const directory1 = fs.readdirSync( './');
     const filePath = process.cwd();
@@ -84,5 +79,8 @@ async function moveFiles(){
     console.error( 'Encountered error while handling files', e);
   }
 }
-
-moveFiles();
+async function main(){
+  await downloadDirectories();
+  moveFiles();
+}
+main();
