@@ -8,16 +8,6 @@ const PostList = ({ posts }) => {
     const { title, tags, date, description } = frontmatter;
     const { slug } = fields;
     let nodeTags = tags;
-    let customPath = null;
-     if(nodeTags.includes('collector')){
-    customPath = 'collectors';
-    }
-    else if(nodeTags.includes('alert')){
-    customPath = 'alerts';
-    }
-    else{
-    customPath = 'other';
-    }
     let newSlug = customPath.concat(slug);
     return (
       <PostListItem

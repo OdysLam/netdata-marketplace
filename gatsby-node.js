@@ -66,15 +66,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       let nextSlug = null;
       let nodeTags = node.frontmatter.tags;
       let customPath = null;
-     if(nodeTags.includes('collector')){
-    customPath = 'collectors';
-    }
-    else if(nodeTags.includes('alert')){
-    customPath = 'alerts';
-    }
-    else{
-    customPath = 'other';
-    }
+//     if(nodeTags.includes('collector')){
+//    customPath = 'collectors';
+//    }
+//    else if(nodeTags.includes('alert')){
+//    customPath = 'alerts';
+//    }
+//    else{
+//    customPath = 'other';
+//    }
       if (index > 0) {
         prevSlug = blogMarkdownNodes[index - 1].fields.slug;
       }
@@ -85,7 +85,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       reporter.info(node.fields.slug);
       
       createPage({
-        path: `${customPath}${node.fields.slug}`,
+        path: `${node.fields.slug}`,
         component: path.resolve(`./src/templates/post-template.js`),
         context: {
           slug: `${node.fields.slug}`,

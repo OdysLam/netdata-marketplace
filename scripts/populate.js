@@ -4,18 +4,21 @@ const repoBranch = 'chg-structure';
 const fs = require('fs');
 const path = require('path');
 
+function deleteDirectories() {
+  try {
+      const filePath = process.cwd();
+      fs.rmSync(`./alerts`, { recursive: true });
+      fs.rmSync(`./collectors`, { recursive: true });
+    let dir = fs.readdirSync('./');
+    console.log(`alerts, collectors deleted. Current directory: ${dir}`);
+  }
+  catch( e ) {
+    console.error("Encountered error while download GitHub repositories:", e);
+  }
+}
+
 async function downloadDirectories() {
   
-try {
-    const filePath = process.cwd();
-    fs.rmSync(`./alerts`, { recursive: true });
-    fs.rmSync(`./collectors`, { recursive: true });
-  let dir = fs.readdirSync('./');
-  console.log(`alerts, collectors deleted. Current directory: ${dir}`);
-}
-catch( e ) {
-  console.error("Encountered error while download GitHub repositories:", e);
-}
   const downloader = new Downloader({
     github: {'auth': process.env.GITHUB_AUTH}
   });
@@ -48,6 +51,7 @@ catch( e ) {
             let read = fs.createReadStream(`${filePath}/${filename1}/README`);
             write.on('close', ()=>{
               console.log(`${filePath}/${filename1}/${filename2} was appended to about.md`);
+              deleteDirectories();
             });
             write.write('\n \n');
             read.pipe(write);
@@ -59,7 +63,7 @@ catch( e ) {
               const directory4 = fs.readdirSync(`./${filename1}/${filename2}/${filename3}`);
               for (const filename4 of directory4){
                 if( (filename4.toLowerCase()).match(/readme/) ){
-                  fs.rename(`./${filename1}/${filename2}/${filename3}/${filename4}`, `../content/posts/${filename3}.md`, (error)=>{
+                  fs.rename(`./${filename1}/${filename2}/${filename3}/${filename4}`, `../content/posts/${filename1}/${filename3}.md`, (error)=>{
                     console.log(`moved file ${filename3}/${filename4}`);
                   });
                 }
@@ -82,5 +86,6 @@ catch( e ) {
 async function main(){
   await downloadDirectories();
   moveFiles();
+
 }
 main();
