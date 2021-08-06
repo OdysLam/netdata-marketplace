@@ -6,7 +6,7 @@ module.exports = {
       summary: `A community marketplace for Netdata agent collectors and alerts`,
     },
     description: `A community marketplace for Netdata Agent collectors and alerts`,
-    siteUrl: `https://gatsbyglass.netlify.app`,
+    siteUrl: `marketplace.netdata.cloud`,
     social: {
       twitter: `linuxnetdata`,
     },
