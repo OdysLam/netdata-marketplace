@@ -14,7 +14,7 @@ const PostList = ({ posts }) => {
         tags={tags}
         title={title}
         date={date}
-        slug={newSlug}
+        slug={slug}
         timeToRead={timeToRead}
         description={description}
         excerpt={excerpt}
