@@ -1,3 +1,6 @@
+# Repo specific
+scripts/alerts
+scripts/collectors
 # Logs
 logs
 *.log
