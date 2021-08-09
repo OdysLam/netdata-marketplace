@@ -18,7 +18,7 @@ function deleteDirectories() {
 }
 
 async function downloadDirectories() {
-  
+
   const downloader = new Downloader({
     github: {'auth': process.env.GITHUB_AUTH}
   });
@@ -29,7 +29,7 @@ async function downloadDirectories() {
   dir = fs.readdirSync('./');
   console.log(`Directories downloaded. Current directory: ${dir}`);
 }
-  function moveFiles(){
+async function moveFiles(){
   try {
     const directory1 = fs.readdirSync( './');
     const filePath = process.cwd();
@@ -43,15 +43,15 @@ async function downloadDirectories() {
     for (const filename1  of directory1) {
       console.log(`filename1: ${filename1}`)
       if ( filename1 == 'collectors' || filename1 == 'alerts') {
-        const directory2 = fs.readdirSync( `./${filename1}` );    
-        for (const filename2 of directory2) { 
+        const directory2 = fs.readdirSync( `./${filename1}` );
+        for (const filename2 of directory2) {
           console.log(`filename2: ${filename2}`);
-          if ( filename2 == 'README' ) {
+          if ( filename2.toLowerCase().match(/readme/) ) {
             let write = fs.createWriteStream("../content/pages/about.md", {flags: 'a'});
-            let read = fs.createReadStream(`${filePath}/${filename1}/README`);
+            let read = fs.createReadStream(`${filePath}/${filename1}/${filename2}`);
             write.on('close', ()=>{
+
               console.log(`${filePath}/${filename1}/${filename2} was appended to about.md`);
-              deleteDirectories();
             });
             write.write('\n \n');
             read.pipe(write);
@@ -73,9 +73,9 @@ async function downloadDirectories() {
                   });
                 }
               }
-            } 
+            }
           }
-        }  
+        }
       }
    }
   }
@@ -84,8 +84,8 @@ async function downloadDirectories() {
   }
 }
 async function main(){
+  deleteDirectories()
   await downloadDirectories();
-  moveFiles();
-
+  await moveFiles();
 }
 main();
