@@ -1,18 +1,14 @@
 ---
-title: About Mee
+title: About Netdata Marketplace
 template: about-template
-profile_image: '/media/profile-image.jpg'
+profile_image: '/media/netdata-logomark.png'
 ---
 
-# Hi, I'm John Doe
-
-This website is a live example of a Gatsby Starter — it's not a real blog.
-People using this starter may want to add some information to this page about them or their business
 
  
 
  
-## Intro
+##  Community Alerts
 
 Netdata alerts are a critical piece of what makes Netdata so easy to use. It comes packaged with a large number of alerts about common use-cases, ready to be used with sane defaults. That makes Netdata to work out-of-the-box for most applications.
 
@@ -87,7 +83,7 @@ For a list of data sources and plugins, you can visit the following page on our 
 
 
 
-## Intro
+## Community Collectors
 
 Community collectors are extensions for Netdata that have been contributed by community members. The extend Netdata by enabling it to monitor various data sources, from Tor to hardware sensors.
 
